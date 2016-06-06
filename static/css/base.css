@@ -809,7 +809,7 @@ table#change-history tbody th {
 
 #header {
     width: auto;
-    height: 40px;
+    min-height: 40px;
     padding: 10px 40px;
     background: #516333;
     line-height: 40px;

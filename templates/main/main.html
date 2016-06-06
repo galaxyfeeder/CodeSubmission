@@ -4,5 +4,17 @@
 {% block content_title %}{% trans "Home" %}{% endblock %}
 
 {% block content %}
-    This is home.
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Problems</h1>
+            <ol>
+                {% for problem in problems %}
+                    <li><a href="{% url 'problem' problem.pk %}">{{ problem }}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <h1>Submissions</h1>
+        </div>
+    </div>
 {% endblock %}
