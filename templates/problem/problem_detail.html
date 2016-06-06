@@ -3,6 +3,14 @@
 
 {% block content_title %}{% trans "Problem" %}{% endblock %}
 
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        {% if title %} &rsaquo; Problems &rsaquo; {{ title }}{% endif %}
+    </div>
+{% endblock %}
+
 {% block content %}
+    <h1>{{ problem }}</h1>
     Nothing to show here
 {% endblock %}
