@@ -4,5 +4,5 @@ from django.contrib.auth.decorators import login_required
 from main.views import HomeView
 
 urlpatterns = [
-    url(r'^', login_required(HomeView.as_view()), name='home')
+    url(r'^$', login_required(HomeView.as_view()), name='home')
 ]
