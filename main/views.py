@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.utils.translation import ugettext as _
 
 from problem.models import Problem
 from submission.models import Submission
@@ -13,5 +13,6 @@ class HomeView(TemplateView):
 
         context['problems'] = Problem.objects.all()
         context['submissions'] = Submission.objects.filter(submitter=self.request.user.student)
+        context['title'] = _('Home')
 
         return context

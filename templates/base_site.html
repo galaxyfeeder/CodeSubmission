@@ -2,7 +2,13 @@
 
 {% load i18n %}
 
-{% block title %}{{ title }} | {% trans "Code submission" %}{% endblock %}
+{% block title %}
+    {% if title %}
+        {{ title }} | {% trans "Code submission" %}
+    {% else %}
+        {% block site_title %}{% endblock %} | {% trans "Code submission" %}
+    {% endif %}
+{% endblock %}
 
 {% block branding %}
     <h1 id="site-name"><a href="{% url 'home' %}">{{ site_header|default:_('Code submission') }}</a></h1>

@@ -1,10 +1,12 @@
 {% extends "base_site.html" %}
 {% load i18n %}
 
+{% block site_title %}{{ problem.title }}{% endblock %}
+
 {% block breadcrumbs %}
     <div class="breadcrumbs">
         <a href="{% url 'home' %}">{% trans 'Home' %}</a>
-        {% if title %} &rsaquo; Problems &rsaquo; {{ title }}{% endif %}
+        &rsaquo; {% trans "Problems" %} &rsaquo; {{ problem.title }}  &rsaquo; {% trans "Submit" %}
     </div>
 {% endblock %}
 
@@ -23,5 +25,4 @@
             </div>
         </div>
     {% endfor %}
-    <a class="button" href="{% url 'submit' problem.pk %}">{% trans "Submit" %}</a>
 {% endblock %}

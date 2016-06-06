@@ -2,7 +2,7 @@
 {% load i18n static %}
 
 {% block extrastyle %}{{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/login.css" %}"/>
     {{ form.media }}
 {% endblock %}
 
@@ -12,7 +12,7 @@
 
 {% block nav-global %}{% endblock %}
 
-{% block content_title %}{% trans "Log in" %}{% endblock %}
+{% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
