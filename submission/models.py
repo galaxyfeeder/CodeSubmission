@@ -15,3 +15,9 @@ class Submission(models.Model):
     submitter = models.ForeignKey(Student)
     code = models.FileField(storage=FileSystemStorage(location=urlparse.urljoin(BASE_DIR, 'static_server/protected')),
                             upload_to='submissions')
+    STATUS_CHOICES = (
+        (0, 'Not revised'),
+        (1, 'Started revising'),
+        (2, 'Revised')
+    )
+    status = models.IntegerField(default=0)
