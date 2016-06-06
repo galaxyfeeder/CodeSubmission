@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-06 18:01+0200\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: templates/base.html:32
+msgid "Welcome,"
+msgstr "Benvingut,"
+
+#: templates/base.html:36
+msgid "Log out"
+msgstr "Tancar sessió"
+
+#: templates/base.html:45 templates/main/main.html:4
+msgid "Home"
+msgstr "Inici"
+
+#: templates/base_site.html:5 templates/base_site.html:8
+msgid "Code submission"
+msgstr "Code submission"
+
+#: templates/problem/problem_detail.html:4
+msgid "Problem"
+msgstr ""
+
+#: templates/registration/logged_out.html:8
+msgid "Log in again"
+msgstr "Entrar de nou"
+
+#: templates/registration/login.html:15 templates/registration/login.html:47
+msgid "Log in"
+msgstr "Entrar"
+
+#: templates/registration/login.html:22
+msgid "Please correct the error below."
+msgstr "Sius plau, arregla l'error."
+
+#: templates/registration/login.html:23
+msgid "Please correct the errors below."
+msgstr "Sisu plau arregla els errors."
