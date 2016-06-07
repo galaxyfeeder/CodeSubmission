@@ -28,4 +28,5 @@
         </div>
     {% endfor %}
     <a class="button" href="{% url 'submit' problem.pk %}">{% trans "Submit" %}</a>
+    <a class="button" href="{% url 'submissions' problem.pk %}">{% trans "See submissions" %}</a>
 {% endblock %}

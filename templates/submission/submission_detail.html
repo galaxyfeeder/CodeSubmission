@@ -14,6 +14,20 @@
 {% block site_title %}{{ submission.problem.title}}{% endblock %}
 
 {% block content %}
-    <h1>{{ submission.problem.title }}</h1>
-    <a class="button" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
+    <h1>{{ submission }}</h1>
+    <a class="button margin-bottom-m" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
+    {% if submission.review_set.all %}
+        <h1>{% trans 'Review' %}</h1>
+        <p>{% trans 'Status' %}: {{ submission.get_status_display }}</p>
+        <div class="row">
+            {% for review in submission.review_set.all %}
+                <div class="col-md-12">
+                    <h3>{{ review.reviewer }}</h3>
+                    <div class="text">
+                        {{ review.comment }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
