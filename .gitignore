@@ -4,3 +4,4 @@ static_server/
 .idea/
 .coverage
 *.pyc
+*.mo
