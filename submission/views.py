@@ -15,17 +15,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 
 from problem.models import Problem
 from submission.forms import SubmissionForm
 from submission.models import Submission
-from ums.models import Student, Judge
+from ums.models import Student
 
 
 class SubmitView(UserPassesTestMixin, TemplateView):
@@ -55,20 +52,9 @@ class SubmitView(UserPassesTestMixin, TemplateView):
                                     )
             submission.save()
 
-        return redirect('submission', problem.pk, submission.pk)
-
-
-@login_required
-def serve_submission_file(request, *args, **kwargs):
-    if Judge.objects.filter(user=request.user).count() != 0 or Student.objects.filter(user=request.user).count() != 0 and request.user == Submission.objects.get(pk=kwargs.get('pk_submission', None)).submitter.user:
-        submission = Submission.objects.get(pk=kwargs.get('pk_submission', None))
-        fsock = open(submission.code.path, 'r')
-        response = HttpResponse(fsock)
-        response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment; filename=submission-' + str(submission.pk)
-        return response
-    else:
-        raise PermissionDenied
+            return redirect('submission', problem.pk, submission.pk)
+        else:
+            return redirect('submit', problem.pk)
 
 
 class SubmissionDetail(UserPassesTestMixin, TemplateView):

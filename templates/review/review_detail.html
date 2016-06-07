@@ -23,7 +23,7 @@
                     <div class="alert alert-danger">{% trans 'This submission has been marked as started revising.' %}</div>
                 </div>
                 <div class="col-md-12 padding-bottom-s">
-                    <a class="button" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
+                    <a class="button" href="{{ submission.code }}">{% trans "Download code" %}</a>
                 </div>
                 <div class="col-md-12">
                     {{ review_form.comment }}
