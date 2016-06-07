@@ -71,7 +71,7 @@ class SubmissionList(UserPassesTestMixin, TemplateView):
     template_name = "submission/submission_list.html"
 
     def test_func(self):
-        Student.objects.filter(user=self.request.user).count() != 0
+        return Student.objects.filter(user=self.request.user).count() != 0
 
     def get_context_data(self, **kwargs):
         context = super(SubmissionList, self).get_context_data(**kwargs)
