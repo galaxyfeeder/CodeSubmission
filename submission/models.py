@@ -18,6 +18,7 @@ class Submission(models.Model):
     STATUS_CHOICES = (
         (0, 'Not revised'),
         (1, 'Started revising'),
-        (2, 'Revised')
+        (2, 'Revised and accepted'),
+        (3, 'Revised and declined')
     )
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=0, choices=STATUS_CHOICES)
