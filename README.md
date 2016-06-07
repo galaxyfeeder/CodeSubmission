@@ -8,3 +8,4 @@ comment.
 * Bootstrap
 * jquery
 * font-awesome
+* TinyMCE
