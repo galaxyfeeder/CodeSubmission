@@ -1,29 +1,47 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-07 00:09+0200\n"
+"POT-Creation-Date: 2016-06-07 09:41+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
-#: main/views.py:16 templates/base.html:42 templates/main/main.html:4
-#: templates/main/main.html.py:8 templates/problem/problem_detail.html:6
+#: main/views.py:16 templates/base.html:43 templates/main/main.html:4
+#: templates/main/main.html:8 templates/problem/problem_detail.html:6
+#: templates/problem/problem_list.html:4 templates/problem/problem_list.html:8
 #: templates/submission/submit.html:8
 msgid "Home"
 msgstr "Inici"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Welcome,"
 msgstr "Benvingut,"
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Log out"
 msgstr "Tancar sessió"
 
-#: templates/base_site.html:7 templates/base_site.html.py:9
+#: templates/base_site.html:7 templates/base_site.html:9
 #: templates/base_site.html:14
 msgid "Code submission"
 msgstr "Code submission"
 
-#: templates/problem/problem_detail.html:26 templates/submission/submit.html:9
+#: templates/main/main.html:15 templates/problem/problem_detail.html:7
+#: templates/problem/problem_list.html:9
+#: templates/problem/problem_list.html:16 templates/submission/submit.html:9
+msgid "Problems"
+msgstr "Problemes"
+
+#: templates/main/main.html:23
+#, fuzzy
+#| msgid "Code submission"
+msgid "Submissions"
+msgstr "Code submission"
+
+#: templates/main/main.html:28
+msgid "There's nothing submitted."
+msgstr "No s'ha pujat res."
+
+#: templates/problem/problem_detail.html:30
+#: templates/submission/submit.html:11 templates/submission/submit.html:20
 msgid "Submit"
 msgstr "Enviar"
 
@@ -42,7 +60,3 @@ msgstr "Sius plau, arregla l'error."
 #: templates/registration/login.html:23
 msgid "Please correct the errors below."
 msgstr "Sisu plau arregla els errors."
-
-#: templates/submission/submit.html:9
-msgid "Problems"
-msgstr "Problemes"
