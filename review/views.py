@@ -1,12 +1,18 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 
 from review.forms import ReviewForm
 from review.models import Review
 from submission.models import Submission
+from ums.models import Judge
 
 
-class ReviewList(TemplateView):
+class ReviewList(UserPassesTestMixin, TemplateView):
+
+    def test_func(self):
+        return Judge.objects.filter(user=self.request.user).count() != 0
+
     template_name = 'review/review_list.html'
 
     def get_context_data(self, **kwargs):
@@ -19,8 +25,11 @@ class ReviewList(TemplateView):
         return context
 
 
-class ReviewDetail(TemplateView):
+class ReviewDetail(UserPassesTestMixin, TemplateView):
     template_name = 'review/review_detail.html'
+
+    def test_func(self):
+        return Judge.objects.filter(user=self.request.user).count() != 0
 
     def get_context_data(self, **kwargs):
         context = super(ReviewDetail, self).get_context_data(**kwargs)
