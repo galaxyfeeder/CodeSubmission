@@ -23,8 +23,14 @@
             {% if can_submit %}
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ submit_form.code }}
-                    <input type="submit" class="margin-top-m" value="{% trans 'Submit' %}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ submit_form.code }}
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" class="margin-top-m" value="{% trans 'Submit' %}">
+                        </div>
+                    </div>
                 </form>
             {% else %}
                 <div class="alert alert-danger">{% trans "There's a submission on the waitlist or there's a submission already aproved for this problem." %}</div>            {% endif %}
