@@ -1,2 +1,7 @@
 Django==1.9.7
+argparse==1.2.1
+dj-database-url==0.4.1
 django-tinymce==2.3.0
+gunicorn==19.6.0
+whitenoise==3.2
+wsgiref==0.1.2
