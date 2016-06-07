@@ -12,11 +12,10 @@ from ums.models import Student, Judge
 
 
 class SubmitView(UserPassesTestMixin, TemplateView):
+    template_name = "submission/submit.html"
 
     def test_func(self):
         return Student.objects.filter(user=self.request.user).count() != 0
-
-    template_name = "submission/submit.html"
 
     def get_context_data(self, **kwargs):
         context = super(SubmitView, self).get_context_data(**kwargs)
@@ -24,7 +23,7 @@ class SubmitView(UserPassesTestMixin, TemplateView):
         context['problem'] = problem = Problem.objects.get(pk=kwargs.get('pk', None))
         context['submit_form'] = SubmissionForm()
         context['submissions'] = subs = Submission.objects.filter(problem=problem, submitter=self.request.user.student)
-        context['can_submit'] = ([x for x in subs if x.status <= 1].__len__() == 0)
+        context['can_submit'] = ([x for x in subs if x.status <= 1 or x.status == 2].__len__() == 0)
 
         return context
 

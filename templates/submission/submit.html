@@ -27,8 +27,7 @@
                     <input type="submit" class="margin-top-m" value="{% trans 'Submit' %}">
                 </form>
             {% else %}
-                <div class="alert alert-danger">{% trans "There's a submission on the waitlist. You cannot upload now." %}</div>
-            {% endif %}
+                <div class="alert alert-danger">{% trans "There's a submission on the waitlist or there's a submission already aproved for this problem." %}</div>            {% endif %}
         </div>
         <div class="col-md-6">
             <h1>{% trans 'Submissions' %}</h1>
