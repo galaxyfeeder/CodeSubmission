@@ -22,3 +22,7 @@ class Submission(models.Model):
         (3, 'Revised and declined')
     )
     status = models.IntegerField(default=0, choices=STATUS_CHOICES)
+    number = models.IntegerField(default=1)
+
+    def __unicode__(self):
+        return self.problem.__unicode__() + ' #' + str(self.number)
