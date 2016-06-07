@@ -6,23 +6,17 @@
 {% block breadcrumbs %}
     <div class="breadcrumbs">
         <a href="{% url 'home' %}">{% trans 'Home' %}</a>
-        &rsaquo; {% trans "Problems" %} &rsaquo; {{ problem.title }}  &rsaquo; {% trans "Submit" %}
+        &rsaquo; <a href="{% url 'problems' %}">{% trans 'Problems' %}</a>
+        &rsaquo; <a href="{% url 'problem' problem.pk %}">{{ problem.title }}</a>
+        &rsaquo; {% trans "Submit" %}
     </div>
 {% endblock %}
 
 {% block content %}
-    <h1>{{ problem.title }}</h1>
-    {{ problem.body|safe }}
-    {% for testcase in problem.testcase_set.all %}
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Entrada</h3>
-                {{ testcase.input }}
-            </div>
-            <div class="col-md-6">
-                <h3>Sortida</h3>
-                {{ testcase.output }}
-            </div>
-        </div>
-    {% endfor %}
+    <h1>Submit: {{ problem.title }}</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ submit_form.code }}
+        <input type="submit" class="margin-top-m" value="{% trans 'Submit' %}">
+    </form>
 {% endblock %}

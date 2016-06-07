@@ -6,26 +6,17 @@
 {% block breadcrumbs %}
     <div class="breadcrumbs">
         <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        &rsaquo; {% trans 'Problems' %}
     </div>
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h1>{% trans 'Problems' %}</h1>
             <ol>
                 {% for problem in problems %}
                     <li><a href="{% url 'problem' problem.pk %}">{{ problem }}</a></li>
-                {% endfor %}
-            </ol>
-        </div>
-        <div class="col-md-6">
-            <h1>{% trans 'Submissions' %}</h1>
-            <ol>
-                {% for submission in submissions %}
-                    <li><a href="{% url 'problem' problem.pk %}">{{ submission }}</a></li>
-                {% empty %}
-                    <p>{% trans "There's nothing submitted." %}</p>
                 {% endfor %}
             </ol>
         </div>

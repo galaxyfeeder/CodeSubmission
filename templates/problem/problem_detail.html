@@ -4,15 +4,19 @@
 {% block breadcrumbs %}
     <div class="breadcrumbs">
         <a href="{% url 'home' %}">{% trans 'Home' %}</a>
-        {% if title %} &rsaquo; Problems &rsaquo; {{ title }}{% endif %}
+        &rsaquo; <a href="{% url 'problems' %}">{% trans 'Problems' %}</a> &rsaquo; {{ problem.title }}
     </div>
 {% endblock %}
 
+{% block site_title %}{{ problem.title}}{% endblock %}
+
 {% block content %}
     <h1>{{ problem.title }}</h1>
-    {{ problem.body|safe }}
+    <div class="text margin-bottom-m">
+        {{ problem.body|safe }}
+    </div>
     {% for testcase in problem.testcase_set.all %}
-        <div class="row">
+        <div class="row margin-bottom-m">
             <div class="col-md-6">
                 <h3>Entrada</h3>
                 {{ testcase.input }}
