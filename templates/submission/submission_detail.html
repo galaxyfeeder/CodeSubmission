@@ -1,0 +1,19 @@
+{% extends "base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a href="{% url 'problems' %}">{% trans 'Problems' %}</a>
+        &rsaquo; <a href="{% url 'problem' submission.problem.pk %}">{{ submission.problem.title }}</a>
+        &rsaquo; <a href="{% url 'submissions' submission.problem.pk %}">{% trans 'Submissions' %}</a>
+        &rsaquo; {{ submission }}
+    </div>
+{% endblock %}
+
+{% block site_title %}{{ submission.problem.title}}{% endblock %}
+
+{% block content %}
+    <h1>{{ submission.problem.title }}</h1>
+    <a class="button" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
+{% endblock %}
