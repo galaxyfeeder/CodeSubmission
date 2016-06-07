@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
@@ -32,6 +33,7 @@ class SubmitView(TemplateView):
         return redirect('submit', problem.pk)
 
 
+@login_required
 def serve_submission_file(request, *args, **kwargs):
     submission = Submission.objects.get(pk=kwargs.get('pk_submission', None))
     fsock = open(submission.code.path, 'r')
