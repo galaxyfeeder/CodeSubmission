@@ -1,12 +1,15 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-07 09:41+0200\n"
+"POT-Creation-Date: 2016-06-07 12:22+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
 #: main/views.py:16 templates/base.html:43 templates/main/main.html:4
 #: templates/main/main.html:8 templates/problem/problem_detail.html:6
 #: templates/problem/problem_list.html:4 templates/problem/problem_list.html:8
+#: templates/review/review_detail.html:6 templates/review/review_list.html:6
+#: templates/submission/submission_detail.html:6
+#: templates/submission/submission_list.html:6
 #: templates/submission/submit.html:8
 msgid "Home"
 msgstr "Inici"
@@ -26,22 +29,29 @@ msgstr "Code submission"
 
 #: templates/main/main.html:15 templates/problem/problem_detail.html:7
 #: templates/problem/problem_list.html:9
-#: templates/problem/problem_list.html:16 templates/submission/submit.html:9
+#: templates/problem/problem_list.html:16
+#: templates/submission/submission_detail.html:7
+#: templates/submission/submission_list.html:7
+#: templates/submission/submit.html:9
 msgid "Problems"
 msgstr "Problemes"
 
-#: templates/main/main.html:23
+#: templates/main/main.html:23 templates/submission/submission_detail.html:9
+#: templates/submission/submission_list.html:9
+#: templates/submission/submission_list.html:18
 #, fuzzy
 #| msgid "Code submission"
 msgid "Submissions"
 msgstr "Code submission"
 
-#: templates/main/main.html:28
+#: templates/main/main.html:28 templates/review/review_list.html:21
+#: templates/submission/submission_list.html:23
 msgid "There's nothing submitted."
 msgstr "No s'ha pujat res."
 
 #: templates/problem/problem_detail.html:30
-#: templates/submission/submit.html:11 templates/submission/submit.html:20
+#: templates/review/review_detail.html:35 templates/submission/submit.html:11
+#: templates/submission/submit.html:20
 msgid "Submit"
 msgstr "Enviar"
 
@@ -60,3 +70,46 @@ msgstr "Sius plau, arregla l'error."
 #: templates/registration/login.html:23
 msgid "Please correct the errors below."
 msgstr "Sisu plau arregla els errors."
+
+#: templates/review/review_detail.html:7 templates/review/review_list.html:7
+msgid "Reviews"
+msgstr "Revisions"
+
+#: templates/review/review_detail.html:19
+msgid "Start revising"
+msgstr "Revisar"
+
+#: templates/review/review_detail.html:23
+msgid "This submission has been marked as started revising."
+msgstr "Aquesta submissin esta marcada com començada a revisar."
+
+#: templates/review/review_detail.html:26
+#: templates/submission/submission_detail.html:18
+msgid "Download code"
+msgstr "Descàrregar codi"
+
+#: templates/review/review_detail.html:39
+msgid "This submission has been already revised."
+msgstr "Aquesta submission ja s'ha revisat."
+
+#: templates/review/review_list.html:16
+#, fuzzy
+#| msgid "Code submission"
+msgid "Unrevised submissions"
+msgstr "Code submission"
+
+#: templates/review/review_list.html:26
+msgid "On revising progress"
+msgstr "En revisió"
+
+#: templates/review/review_list.html:31 templates/review/review_list.html:41
+#, fuzzy
+#| msgid "There's nothing submitted."
+msgid "There's nothing to show here."
+msgstr "No s'ha pujat res."
+
+#: templates/review/review_list.html:36
+#, fuzzy
+#| msgid "Code submission"
+msgid "Revised submissions"
+msgstr "Code submission"
