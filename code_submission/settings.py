@@ -39,6 +39,10 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+EXTERNAL_APPS = [
+    'tinymce'
+]
+
 LOCAL_APPS = [
     'problem',
     'submission',
@@ -47,7 +51,7 @@ LOCAL_APPS = [
     'ums'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
