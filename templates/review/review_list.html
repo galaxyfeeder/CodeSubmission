@@ -1,0 +1,46 @@
+{% extends "base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        &rsaquo; {% trans 'Reviews' %}
+    </div>
+{% endblock %}
+
+{% block site_title %}{{ problem.title}}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h1>{% trans 'Unrevised submissions' %}</h1>
+            <ol>
+                {% for submission in unrevised_submissions %}
+                    <li><a href="{% url 'review' submission.pk %}">{{ submission }}</a></li>
+                {% empty %}
+                    <p>{% trans "There's nothing submitted." %}</p>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <h1>{% trans 'On revising progress' %}</h1>
+            <ol>
+                {% for submission in on_progress_submissions %}
+                    <li><a href="{% url 'review' submission.pk %}">{{ submission }}</a></li>
+                {% empty %}
+                    <p>{% trans "There's nothing to show here." %}</p>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <h1>{% trans 'Revised submissions' %}</h1>
+            <ol>
+                {% for submission in revised_submissions %}
+                    <li><a href="{% url 'submission' submission.problem.pk submission.pk %}">{{ submission }}</a></li>
+                {% empty %}
+                    <p>{% trans "There's nothing to show here." %}</p>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endblock %}

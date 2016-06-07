@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^', include('problem.urls')),
     url(r'^', include('submission.urls')),
     url(r'^', include('main.urls')),
+    url(r'^', include('review.urls'))
 ]
