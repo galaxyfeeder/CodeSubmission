@@ -28,7 +28,7 @@
             <ol>
                 {% for submission in submissions %}
                     <li>
-                        {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% endif %}
+                        {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% else %}<i class="fa fa-circle margin-right-xs" style="color: lightgray;"></i>{% endif %}
                         <a href="{% url 'submission' submission.problem.pk submission.pk %}">{{ submission }}</a>
                     </li>
                 {% empty %}

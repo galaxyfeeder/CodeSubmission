@@ -21,8 +21,10 @@ class SubmitView(UserPassesTestMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SubmitView, self).get_context_data(**kwargs)
 
-        context['problem'] = Problem.objects.get(pk=kwargs.get('pk', None))
+        context['problem'] = problem = Problem.objects.get(pk=kwargs.get('pk', None))
         context['submit_form'] = SubmissionForm()
+        context['submissions'] = subs = Submission.objects.filter(problem=problem, submitter=self.request.user.student)
+        context['can_submit'] = ([x for x in subs if x.status <= 1].__len__() == 0)
 
         return context
 
@@ -33,11 +35,11 @@ class SubmitView(UserPassesTestMixin, TemplateView):
         if form.is_valid():
             submission = Submission(problem=problem, submitter=request.user.student, code=request.FILES['code'],
                                     number=Submission.objects.filter(problem=problem,
-                                                                     submitter=request.user.student).count()
+                                                                     submitter=request.user.student).count()+1
                                     )
             submission.save()
 
-        return redirect('submit', problem.pk)
+        return redirect('submission', problem.pk, submission.pk)
 
 
 @login_required
@@ -76,7 +78,7 @@ class SubmissionList(UserPassesTestMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SubmissionList, self).get_context_data(**kwargs)
 
-        context['submissions'] = Submission.objects.filter(submitter=self.request.user.student)
-        context['problem'] = Problem.objects.get(pk=kwargs.get('pk', None))
+        context['problem'] = problem = Problem.objects.get(pk=kwargs.get('pk', None))
+        context['submissions'] = Submission.objects.filter(submitter=self.request.user.student, problem=problem)
 
         return context

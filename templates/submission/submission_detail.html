@@ -20,9 +20,9 @@
 {% block content %}
     <h1>{{ submission }}</h1>
     <a class="button margin-bottom-m" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
+    <h1>{% trans 'Review' %}</h1>
     {% if submission.review_set.all %}
-        <h1>{% trans 'Review' %}</h1>
-        <p>{% trans 'Status' %}: {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% endif %}</p>
+        <p>{% trans 'Status' %}: {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% else %}<i class="fa fa-circle margin-right-xs" style="color: lightgray;"></i>{% endif %}</p>
         <div class="row">
             {% for review in submission.review_set.all %}
                 <div class="col-md-12">
@@ -33,5 +33,7 @@
                 </div>
             {% endfor %}
         </div>
+    {% else %}
+        <div class="text">{% trans "This submission hasn't been revised yet" %}</div>
     {% endif %}
 {% endblock %}
