@@ -1,0 +1,50 @@
+{% extends "base_site.html" %}
+{% load i18n static %}
+
+{% block site_title %}{% trans "Ranking" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        &rsaquo; {% trans 'Ranking' %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <h1>{% trans 'Ranking' %}</h1>
+            <canvas id="ranking"></canvas>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script>
+        var myChart = new Chart($('#ranking'), {
+            type: 'horizontalBar',
+            data: {
+                labels: [{% for r in ranking %}{{ r.0.pk }}, {% endfor %}],
+                datasets: [{
+                    data: [{% for r in ranking %}{{ r.1 }}, {% endfor %}],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                legend:{
+                    display: false
+                }
+            }
+        });
+    </script>
+{% endblock %}

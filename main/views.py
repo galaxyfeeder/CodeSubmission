@@ -33,3 +33,21 @@ class HomeView(TemplateView):
         context['title'] = _('Home')
 
         return context
+
+
+class RankingView(TemplateView):
+    template_name = "main/ranking.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingView, self).get_context_data(**kwargs)
+
+        ranking = []
+        submissions = Submission.objects.all()
+
+        for problem in Problem.objects.all():
+            recount = [x for x in submissions if x.problem == problem and x.status == 2].__len__()
+            ranking.append((problem, recount))
+
+        context['ranking'] = ranking
+
+        return context

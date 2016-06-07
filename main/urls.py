@@ -15,11 +15,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from main.views import HomeView
+from main.views import HomeView, RankingView
 
 urlpatterns = [
-    url(r'^$', login_required(HomeView.as_view()), name='home')
+    url(r'^$', login_required(HomeView.as_view()), name='home'),
+    url(r'^ranking$', login_required(RankingView.as_view()), name='ranking')
 ]
