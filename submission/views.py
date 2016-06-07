@@ -49,7 +49,7 @@ class SubmitView(UserPassesTestMixin, TemplateView):
         form = SubmissionForm(request.POST, request.FILES)
 
         if form.is_valid():
-            submission = Submission(problem=problem, submitter=request.user.student, code=request.FILES['code'],
+            submission = Submission(problem=problem, submitter=request.user.student, code=request.POST['code'],
                                     number=Submission.objects.filter(problem=problem,
                                                                      submitter=request.user.student).count()+1
                                     )
