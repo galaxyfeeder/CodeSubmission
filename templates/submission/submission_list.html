@@ -1,5 +1,9 @@
 {% extends "base_site.html" %}
-{% load i18n %}
+{% load i18n static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
+{% endblock %}
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -10,7 +14,7 @@
     </div>
 {% endblock %}
 
-{% block site_title %}{{ problem.title}}{% endblock %}
+{% block site_title %}{% trans 'Submissions' %}: {{ problem.title}}{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -18,7 +22,10 @@
             <h1>{% trans 'Submissions' %}</h1>
             <ol>
                 {% for submission in submissions %}
-                    <li><a href="{% url 'submission' submission.problem.pk submission.pk %}">{{ submission }}</a></li>
+                    <li>
+                        {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% endif %}
+                        <a href="{% url 'submission' submission.problem.pk submission.pk %}">{{ submission }}</a>
+                    </li>
                 {% empty %}
                     <p>{% trans "There's nothing submitted." %}</p>
                 {% endfor %}

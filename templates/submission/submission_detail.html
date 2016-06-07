@@ -1,5 +1,9 @@
 {% extends "base_site.html" %}
-{% load i18n %}
+{% load i18n static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
+{% endblock %}
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
@@ -18,7 +22,7 @@
     <a class="button margin-bottom-m" href="{% url 'code' submission.problem.pk submission.pk %}">{% trans "Download code" %}</a>
     {% if submission.review_set.all %}
         <h1>{% trans 'Review' %}</h1>
-        <p>{% trans 'Status' %}: {{ submission.get_status_display }}</p>
+        <p>{% trans 'Status' %}: {% if submission.status == 2 %}<i class="fa fa-check-circle margin-right-xs" style="color: green;"></i>{% elif submission.status == 3 %}<i class="fa fa-times-circle margin-right-xs" style="color: red;"></i>{% endif %}</p>
         <div class="row">
             {% for review in submission.review_set.all %}
                 <div class="col-md-12">
