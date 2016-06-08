@@ -48,6 +48,7 @@ class RankingProblemsView(TemplateView):
         for problem in Problem.objects.all():
             recount = [x for x in submissions if x.problem == problem and x.status == 2].__len__()
             ranking.append((problem.order, recount))
+            ranking.sort(key=lambda r: r[0])
 
         context['ranking'] = ranking
 
@@ -66,6 +67,7 @@ class RankingUsersView(TemplateView):
         for student in Student.objects.all():
             recount = sum([x.problem.points for x in submissions if x.submitter == student and x.status == 2])
             ranking.append((student.user.username, recount))
+            ranking.sort(key=lambda r: r[1])
 
         context['ranking'] = ranking
 
