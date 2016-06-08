@@ -67,7 +67,7 @@ class RankingUsersView(TemplateView):
         for student in Student.objects.all():
             recount = sum([x.problem.points for x in submissions if x.submitter == student and x.status == 2])
             ranking.append((student.user.username, recount))
-            ranking.sort(key=lambda r: r[1])
+            ranking.sort(key=lambda r: r[1], reverse=True)
 
         context['ranking'] = ranking
 
