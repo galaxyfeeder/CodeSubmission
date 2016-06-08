@@ -20,6 +20,7 @@ from django.utils.translation import ugettext as _
 
 from problem.models import Problem
 from submission.models import Submission
+from ums.models import Student
 
 
 class HomeView(TemplateView):
@@ -35,18 +36,36 @@ class HomeView(TemplateView):
         return context
 
 
-class RankingView(TemplateView):
+class RankingProblemsView(TemplateView):
     template_name = "main/ranking.html"
 
     def get_context_data(self, **kwargs):
-        context = super(RankingView, self).get_context_data(**kwargs)
+        context = super(RankingProblemsView, self).get_context_data(**kwargs)
 
         ranking = []
         submissions = Submission.objects.all()
 
         for problem in Problem.objects.all():
             recount = [x for x in submissions if x.problem == problem and x.status == 2].__len__()
-            ranking.append((problem, recount))
+            ranking.append((problem.order, recount))
+
+        context['ranking'] = ranking
+
+        return context
+
+
+class RankingUsersView(TemplateView):
+    template_name = "main/ranking.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingUsersView, self).get_context_data(**kwargs)
+
+        ranking = []
+        submissions = Submission.objects.all()
+
+        for student in Student.objects.all():
+            recount = sum([x.problem.points for x in submissions if x.submitter == student and x.status == 2])
+            ranking.append((student.user.username, recount))
 
         context['ranking'] = ranking
 

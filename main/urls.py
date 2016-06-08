@@ -18,9 +18,10 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from main.views import HomeView, RankingView
+from main.views import HomeView, RankingProblemsView, RankingUsersView
 
 urlpatterns = [
     url(r'^$', login_required(HomeView.as_view()), name='home'),
-    url(r'^ranking$', login_required(RankingView.as_view()), name='ranking')
+    url(r'^ranking/problems$', login_required(RankingProblemsView.as_view()), name='ranking_problems'),
+    url(r'^ranking/users', login_required(RankingUsersView.as_view()), name='ranking_users')
 ]
