@@ -20,7 +20,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nhc7g_bs1e4negriqua$%g@i-%g38p(8p_hq_goz&cjjw^s(t3'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -85,7 +85,7 @@ DATABASES = {
     }
 }
 
-# DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
+DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
