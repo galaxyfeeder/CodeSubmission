@@ -20,7 +20,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nhc7g_bs1e4negriqua$%g@i-%g38p(8p_hq_goz&cjjw^s(t3'
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
